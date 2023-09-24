@@ -1,0 +1,5 @@
+tptp_lark_parser
+orjson
+pexpect
+sphinx-autodoc-typehints
+importlib_resources

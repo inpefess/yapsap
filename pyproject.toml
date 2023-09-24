@@ -1,0 +1,158 @@
+[tool.poetry]
+name = "yapsap"
+version = "0.0.1"
+description = "Yet Another Python SAturation Prover"
+authors = ["Boris Shminke <boris@shminke.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/inpefess/yapsap"
+readme = "README.rst"
+classifiers=[
+	"Programming Language :: Python :: 3.7",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"License :: OSI Approved :: Apache Software License",
+	"Operating System :: OS Independent",
+	"Intended Audience :: Science/Research",
+	"Development Status :: 1 - Planning",
+	"Environment :: Console",
+	"Natural Language :: English",
+	"Typing :: Typed"
+]
+include = ["yapsap/py.typed"]
+keywords = ["saturation-style proving", "automated theorem proving", "given clause algorithm"]
+
+[tool.poetry.dependencies]
+python = ">= 3.8.1, < 3.12"
+importlib_resources = {version = "*", markers = "python_version < \"3.9\""}
+orjson = "*"
+tptp-lark-parser = "*"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+jupyterlab = "*"
+mypy = "*"
+pylint = "*"
+pytest-coverage = "*"
+pre-commit = "*"
+types-dataclasses = "*"
+sphinx-rtd-theme = "*"
+sphinx-autodoc-typehints = "*"
+pydocstyle = "*"
+tbump = "*"
+pyenchant = "*"
+vulture = "*"
+furo = "*"
+pyupgrade = "*"
+flake8 = "*"
+pyroma = "*"
+bandit = "*"
+
+[tool.black]
+line-length=79
+
+[tool.isort]
+profile = "black"
+src_paths = ["yapsap"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--doctest-modules --cov yapsap --cov-report xml --cov-fail-under=100 --junit-xml test-results/yapsap.xml"
+testpaths = ["yapsap"]
+doctest_optionflags = "NORMALIZE_WHITESPACE ELLIPSIS"
+
+[tool.pylint.MASTER]
+load-plugins = [
+    "pylint.extensions.consider_ternary_expression",
+    "pylint.extensions.docparams",
+    "pylint.extensions.mccabe",
+    "pylint.extensions.set_membership",
+]
+
+[tool.pylint.parameter_documentation]
+accept-no-param-doc = false
+accept-no-raise-doc = false
+accept-no-return-doc = true
+accept-no-yields-doc = false
+default-docstring-type = "sphinx"
+
+[tool.pylint.similarities]
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true
+ignore-signatures = true
+min-similarity-lines = 4
+
+[tool.pylint.format]
+ignore-long-lines = "https://"
+max-line-length = 79
+
+[tool.pylint.design]
+max-statements = 10
+
+[tool.pylint.typecheck]
+generated-members = ["orjson"]
+
+[tool.pylint.spelling]
+spelling-dict = "en_GB"
+spelling-private-dict-file = "spelling.dict"
+
+[tool.mypy]
+show_error_codes = true
+incremental = false
+disable_error_code = "no-redef"
+
+[[tool.mypy.overrides]]
+module = ["importlib_resources"]
+ignore_missing_imports = true
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py38,py39,py310,py311
+
+[testenv]
+deps =
+    pytest-cov
+    pydocstyle
+    pylint
+    mypy
+    toml
+    pyenchant
+commands =
+    pydocstyle yapsap
+    pylint yapsap
+    mypy yapsap
+    pytest
+"""
+
+[tool.tbump]
+github_url = "https://github.com/inpfess/yapsap/"
+
+[tool.tbump.version]
+current = "0.0.1"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "yapsap/__init__.py"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+
+[[tool.tbump.file]]
+src = "doc/source/conf.py"
