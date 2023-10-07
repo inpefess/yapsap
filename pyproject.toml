@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yapsap"
-version = "0.0.1"
+version = "0.0.2"
 description = "Yet Another Python SAturation Prover"
 authors = ["Boris Shminke <boris@shminke.com>"]
 license = "Apache-2.0"
@@ -134,7 +134,7 @@ commands =
 github_url = "https://github.com/inpfess/yapsap/"
 
 [tool.tbump.version]
-current = "0.0.1"
+current = "0.0.2"
 regex = '''
   (?P<major>\d+)
   \.

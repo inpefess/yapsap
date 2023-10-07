@@ -20,7 +20,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath(".."))
 project = "yapsap"
-version = "0.0.1"
+version = "0.0.2"
 copyright = "2021-2023, Boris Shminke"
 author = "Boris Shminke"
 extensions = ["sphinx.ext.autodoc"]
