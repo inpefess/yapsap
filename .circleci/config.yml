@@ -1,0 +1,21 @@
+version: 2.1
+jobs:
+  build-and-test:
+    docker:
+      - image: inpefess/multipython
+    steps:
+      - checkout
+      - run:
+          name: use tox
+          command: |
+            pip install tox
+            pyenv local 3.8.15 3.9.15 3.10.7 3.11.0
+            tox
+      - store_artifacts:
+          path: build
+      - store_test_results:
+          path: test-results
+workflows:
+  main:
+    jobs:
+      - build-and-test
