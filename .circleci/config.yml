@@ -1,0 +1,21 @@
+version: 2.1
+orbs:
+  codecov: codecov/codecov@3.3.0
+jobs:
+  build-and-test:
+    docker:
+      - image: inpefess/multipython
+    steps:
+      - checkout
+      - run:
+          name: use tox
+          command: |
+            pip install tox
+            pyenv local 3.8.15 3.9.15 3.10.7 3.11.0
+            tox
+workflows:
+  main:
+    jobs:
+      - build-and-test:
+          post-steps:
+            - codecov/upload
