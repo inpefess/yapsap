@@ -30,13 +30,11 @@ tptp-lark-parser = "*"
 
 [tool.poetry.group.dev.dependencies]
 black = "*"
-jupyterlab = "*"
 mypy = "*"
 pylint = "*"
 pytest-coverage = "*"
 pre-commit = "*"
 types-dataclasses = "*"
-sphinx-rtd-theme = "*"
 sphinx-autodoc-typehints = "*"
 pydocstyle = "*"
 tbump = "*"
