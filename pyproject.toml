@@ -45,6 +45,7 @@ pyupgrade = "*"
 flake8 = "*"
 pyroma = "*"
 bandit = "*"
+jedi = "*"
 
 [tool.black]
 line-length=79
@@ -133,7 +134,7 @@ commands =
 github_url = "https://github.com/inpfess/yapsap/"
 
 [tool.tbump.version]
-current = "0.0.1"
+current = "0.0.0"
 regex = '''
   (?P<major>\d+)
   \.
@@ -153,4 +154,4 @@ src = "yapsap/__init__.py"
 src = "pyproject.toml"
 
 [[tool.tbump.file]]
-src = "doc/source/conf.py"
+src = "doc/conf.py"
