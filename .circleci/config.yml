@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@3.3.0
 jobs:
   build-and-test:
     docker:
@@ -11,11 +13,9 @@ jobs:
             pip install tox
             pyenv local 3.8.15 3.9.15 3.10.7 3.11.0
             tox
-      - store_artifacts:
-          path: build
-      - store_test_results:
-          path: test-results
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build-and-test:
+          post-steps:
+            - codecov/upload
