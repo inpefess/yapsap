@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 
-|Documentation Status|
+|PyPI version|\ |CircleCI|\ |Documentation Status|\ |codecov|
 
 yapsap
 ======
@@ -91,5 +91,11 @@ More documentation
 More documentation can be found
 `here <https://yapsap.readthedocs.io/en/latest>`__.
 
+.. |PyPI version| image:: https://badge.fury.io/py/yapsap.svg
+   :target: https://badge.fury.io/py/yapsap
+.. |CircleCI| image:: https://circleci.com/gh/inpefess/yapsap.svg?style=svg
+   :target: https://circleci.com/gh/inpefess/yapsap
 .. |Documentation Status| image:: https://readthedocs.org/projects/yapsap/badge/?version=latest
    :target: https://yapsap.readthedocs.io/en/latest/?badge=latest
+.. |codecov| image:: https://codecov.io/gh/inpefess/yapsap/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/inpefess/yapsap
