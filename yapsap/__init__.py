@@ -19,4 +19,4 @@ Yet Another Python SAturation-style Prover.
 """
 from yapsap.yapsa_prover import YapsaProver
 
-__version__ = "0.0.0"
+__version__ = "0.0.1"
